@@ -370,7 +370,7 @@ def setup_wandb(expected: Dict[str, Any], pos_args: List[str],
 
     # init wandb
     run = wandb.init()
-    serialization_dir = Path(run.dir) / 'allennlp_serialization_dir'
+    serialization_dir = Path('/tmp', run.id) /  'allennlp_serialization_dir'
     fixed_kwargs_args.append(('serialization-dir', str(serialization_dir)))
     translater = WandbToAllenNLPTranslater(
         expected,
