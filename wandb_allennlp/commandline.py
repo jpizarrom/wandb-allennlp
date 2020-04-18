@@ -166,7 +166,7 @@ class PatterReformatter(object):
                 json.dumps(v)))
 
         else:
-            res = (self.patter[0].format(k), self.pattern[1].format(v))
+            res = (self.pattern[0].format(k), self.pattern[1].format(v))
 
         return res
 
