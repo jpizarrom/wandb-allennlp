@@ -1,5 +1,5 @@
 from wandb_allennlp.commandline import setup_wandb
-from allennlp.run import run
+from allennlp.__main__ import run
 import os
 
 # arguments which SHOULD be present

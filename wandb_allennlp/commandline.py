@@ -12,7 +12,7 @@ import functools
 import argparse
 from collections import OrderedDict
 import wandb
-from allennlp.run import run as allennlp_run
+from allennlp.__main__ import run as allennlp_run
 from pathlib import Path
 import logging
 import os
@@ -123,6 +123,13 @@ def process_argv_args(argv,
 
     return ' '.join([prog, fixed])
 
+import ast
+def arg_as_list(s):
+    try:
+        val = ast.literal_eval(s)
+    except:
+        val = s
+    return val
 
 def create_dynamic_parser(
         args: Optional[List[str]] = None,
@@ -143,7 +150,7 @@ def create_dynamic_parser(
                 "{} no in --key=value form".format(unknown_arg)) from e
 
         if name.startswith(("-", "--")):
-            known_args_parser.add_argument(name)
+            known_args_parser.add_argument(name, type=arg_as_list)
         else:
             raise ValueError("{} no in --key=value form".format(unknown_arg))
 
