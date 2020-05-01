@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 install_requires = [
-    "allennlp==1.0.0rc2",
+    "allennlp==1.0.0rc3",
     "wandb>=0.8.15",
 ]
 
